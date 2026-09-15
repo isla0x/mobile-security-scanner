@@ -1,0 +1,84 @@
+{
+  "score": 29,
+  "summary": {
+    "Critical": 0,
+    "High": 1,
+    "Medium": 7,
+    "Low": 0,
+    "Info": 0
+  },
+  "findings": [
+    {
+      "id": "MANIFEST-DEBUGGABLE",
+      "title": "디버그 모드가 활성화되어 있음 (android:debuggable=true)",
+      "severity": "High",
+      "category": "매니페스트",
+      "description": "배포용 빌드에서 debuggable 플래그가 켜져 있으면 공격자가 디버거를 붙여 런타임 조작이 가능합니다.",
+      "location": "AndroidManifest.xml <application>",
+      "masvs_ref": "MASVS-RESILIENCE"
+    },
+    {
+      "id": "MANIFEST-ALLOWBACKUP",
+      "title": "allowBackup이 허용되어 있음",
+      "severity": "Medium",
+      "category": "매니페스트",
+      "description": "adb backup 등을 통해 루팅되지 않은 기기에서도 앱 데이터가 추출될 수 있습니다.",
+      "location": "AndroidManifest.xml <application>",
+      "masvs_ref": "MASVS-STORAGE-1"
+    },
+    {
+      "id": "SRC-",
+      "title": "민감정보 로그 출력 의심",
+      "severity": "Medium",
+      "category": "로깅",
+      "description": "패턴 '민감정보 로그 출력 의심'이(가) 탐지되었습니다. 소스 코드에서 직접 확인이 필요합니다.",
+      "location": "android/support/v4/app/FragmentStatePagerAdapter.java:147",
+      "masvs_ref": "MASVS-STORAGE-2"
+    },
+    {
+      "id": "SRC-",
+      "title": "외부 저장소에 데이터 직접 쓰기",
+      "severity": "Medium",
+      "category": "저장소",
+      "description": "패턴 '외부 저장소에 데이터 직접 쓰기'이(가) 탐지되었습니다. 소스 코드에서 직접 확인이 필요합니다.",
+      "location": "android/support/v4/content/ContextCompat.java:44",
+      "masvs_ref": "MASVS-STORAGE-1"
+    },
+    {
+      "id": "SRC-",
+      "title": "외부 저장소에 데이터 직접 쓰기",
+      "severity": "Medium",
+      "category": "저장소",
+      "description": "패턴 '외부 저장소에 데이터 직접 쓰기'이(가) 탐지되었습니다. 소스 코드에서 직접 확인이 필요합니다.",
+      "location": "android/support/v4/content/ContextCompat.java:58",
+      "masvs_ref": "MASVS-STORAGE-1"
+    },
+    {
+      "id": "SRC-",
+      "title": "외부 저장소에 데이터 직접 쓰기",
+      "severity": "Medium",
+      "category": "저장소",
+      "description": "패턴 '외부 저장소에 데이터 직접 쓰기'이(가) 탐지되었습니다. 소스 코드에서 직접 확인이 필요합니다.",
+      "location": "android/support/v4/content/ContextCompat.java:72",
+      "masvs_ref": "MASVS-STORAGE-1"
+    },
+    {
+      "id": "SRC-",
+      "title": "외부 저장소에 데이터 직접 쓰기",
+      "severity": "Medium",
+      "category": "저장소",
+      "description": "패턴 '외부 저장소에 데이터 직접 쓰기'이(가) 탐지되었습니다. 소스 코드에서 직접 확인이 필요합니다.",
+      "location": "android/support/v4/content/FileProvider.java:179",
+      "masvs_ref": "MASVS-STORAGE-1"
+    },
+    {
+      "id": "SRC-",
+      "title": "외부 저장소에 데이터 직접 쓰기",
+      "severity": "Medium",
+      "category": "저장소",
+      "description": "패턴 '외부 저장소에 데이터 직접 쓰기'이(가) 탐지되었습니다. 소스 코드에서 직접 확인이 필요합니다.",
+      "location": "android/support/v4/os/EnvironmentCompat.java:21",
+      "masvs_ref": "MASVS-STORAGE-1"
+    }
+  ]
+}

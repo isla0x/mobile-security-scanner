@@ -1,0 +1,228 @@
+{
+  "score": 0,
+  "summary": {
+    "Critical": 4,
+    "High": 12,
+    "Medium": 7,
+    "Low": 1,
+    "Info": 0
+  },
+  "findings": [
+    {
+      "id": "MANIFEST-DEBUGGABLE",
+      "title": "디버그 모드가 활성화되어 있음 (android:debuggable=true)",
+      "severity": "High",
+      "category": "매니페스트",
+      "description": "배포용 빌드에서 debuggable 플래그가 켜져 있으면 공격자가 디버거를 붙여 런타임 조작이 가능합니다.",
+      "location": "AndroidManifest.xml <application>",
+      "masvs_ref": "MASVS-RESILIENCE"
+    },
+    {
+      "id": "MANIFEST-ALLOWBACKUP",
+      "title": "allowBackup이 허용되어 있음",
+      "severity": "Medium",
+      "category": "매니페스트",
+      "description": "adb backup 등을 통해 루팅되지 않은 기기에서도 앱 데이터가 추출될 수 있습니다.",
+      "location": "AndroidManifest.xml <application>",
+      "masvs_ref": "MASVS-STORAGE-1"
+    },
+    {
+      "id": "MANIFEST-CLEARTEXT",
+      "title": "평문 HTTP 트래픽이 허용되어 있음",
+      "severity": "High",
+      "category": "네트워크",
+      "description": "usesCleartextTraffic=true로 인해 암호화되지 않은 통신이 가능해 중간자 공격(MITM)에 노출될 수 있습니다.",
+      "location": "AndroidManifest.xml <application>",
+      "masvs_ref": "MASVS-NETWORK-1"
+    },
+    {
+      "id": "MANIFEST-EXPORTED-ACTIVITY",
+      "title": "권한 검증 없이 노출된 activity: .MainActivity",
+      "severity": "Medium",
+      "category": "매니페스트",
+      "description": "activity가 exported=true이고 permission이 지정되어 있지 않아, 다른 앱에서 자유롭게 호출/접근할 수 있습니다.",
+      "location": "AndroidManifest.xml <activity android:name=\".MainActivity\">",
+      "masvs_ref": "MASVS-PLATFORM-1"
+    },
+    {
+      "id": "MANIFEST-EXPORTED-SERVICE",
+      "title": "권한 검증 없이 노출된 service: .SyncService",
+      "severity": "Medium",
+      "category": "매니페스트",
+      "description": "service가 exported=true이고 permission이 지정되어 있지 않아, 다른 앱에서 자유롭게 호출/접근할 수 있습니다.",
+      "location": "AndroidManifest.xml <service android:name=\".SyncService\">",
+      "masvs_ref": "MASVS-PLATFORM-1"
+    },
+    {
+      "id": "MANIFEST-EXPORTED-RECEIVER",
+      "title": "권한 검증 없이 노출된 receiver: .BootReceiver",
+      "severity": "Medium",
+      "category": "매니페스트",
+      "description": "receiver가 exported=true이고 permission이 지정되어 있지 않아, 다른 앱에서 자유롭게 호출/접근할 수 있습니다.",
+      "location": "AndroidManifest.xml <receiver android:name=\".BootReceiver\">",
+      "masvs_ref": "MASVS-PLATFORM-1"
+    },
+    {
+      "id": "MANIFEST-EXPORTED-PROVIDER",
+      "title": "권한 검증 없이 노출된 provider: .UserDataProvider",
+      "severity": "Critical",
+      "category": "매니페스트",
+      "description": "provider가 exported=true이고 permission이 지정되어 있지 않아, 다른 앱에서 자유롭게 호출/접근할 수 있습니다.",
+      "location": "AndroidManifest.xml <provider android:name=\".UserDataProvider\">",
+      "masvs_ref": "MASVS-PLATFORM-1"
+    },
+    {
+      "id": "SRC-AWSACCESSKEY",
+      "title": "AWS Access Key",
+      "severity": "Critical",
+      "category": "시크릿 노출",
+      "description": "패턴 'AWS Access Key'이(가) 탐지되었습니다. 소스 코드에서 직접 확인이 필요합니다.",
+      "location": "com/example/app/ApiClient.java:10",
+      "masvs_ref": "MASVS-STORAGE-1"
+    },
+    {
+      "id": "SRC-GENERICAPIKEY",
+      "title": "Generic API Key 변수",
+      "severity": "High",
+      "category": "시크릿 노출",
+      "description": "패턴 'Generic API Key 변수'이(가) 탐지되었습니다. 소스 코드에서 직접 확인이 필요합니다.",
+      "location": "com/example/app/ApiClient.java:11",
+      "masvs_ref": "MASVS-STORAGE-1"
+    },
+    {
+      "id": "SRC-",
+      "title": "하드코딩된 비밀번호",
+      "severity": "High",
+      "category": "시크릿 노출",
+      "description": "패턴 '하드코딩된 비밀번호'이(가) 탐지되었습니다. 소스 코드에서 직접 확인이 필요합니다.",
+      "location": "com/example/app/ApiClient.java:12",
+      "masvs_ref": "MASVS-STORAGE-1"
+    },
+    {
+      "id": "SRC-JWT",
+      "title": "JWT/시크릿 키",
+      "severity": "High",
+      "category": "시크릿 노출",
+      "description": "패턴 'JWT/시크릿 키'이(가) 탐지되었습니다. 소스 코드에서 직접 확인이 필요합니다.",
+      "location": "com/example/app/ApiClient.java:13",
+      "masvs_ref": "MASVS-STORAGE-1"
+    },
+    {
+      "id": "SRC-MD5",
+      "title": "취약한 해시 알고리즘: MD5",
+      "severity": "Medium",
+      "category": "암호화",
+      "description": "패턴 '취약한 해시 알고리즘: MD5'이(가) 탐지되었습니다. 소스 코드에서 직접 확인이 필요합니다.",
+      "location": "com/example/app/ApiClient.java:17",
+      "masvs_ref": "MASVS-CRYPTO-1"
+    },
+    {
+      "id": "SRC-DES",
+      "title": "취약한 암호화: DES",
+      "severity": "High",
+      "category": "암호화",
+      "description": "패턴 '취약한 암호화: DES'이(가) 탐지되었습니다. 소스 코드에서 직접 확인이 필요합니다.",
+      "location": "com/example/app/ApiClient.java:25",
+      "masvs_ref": "MASVS-CRYPTO-1"
+    },
+    {
+      "id": "SRC-ECB",
+      "title": "취약한 블록 모드: ECB",
+      "severity": "High",
+      "category": "암호화",
+      "description": "패턴 '취약한 블록 모드: ECB'이(가) 탐지되었습니다. 소스 코드에서 직접 확인이 필요합니다.",
+      "location": "com/example/app/ApiClient.java:25",
+      "masvs_ref": "MASVS-CRYPTO-1"
+    },
+    {
+      "id": "SRC-",
+      "title": "민감정보 로그 출력 의심",
+      "severity": "Medium",
+      "category": "로깅",
+      "description": "패턴 '민감정보 로그 출력 의심'이(가) 탐지되었습니다. 소스 코드에서 직접 확인이 필요합니다.",
+      "location": "com/example/app/ApiClient.java:32",
+      "masvs_ref": "MASVS-STORAGE-2"
+    },
+    {
+      "id": "SRC-JWT",
+      "title": "JWT/시크릿 키",
+      "severity": "High",
+      "category": "시크릿 노출",
+      "description": "패턴 'JWT/시크릿 키'이(가) 탐지되었습니다. 소스 코드에서 직접 확인이 필요합니다.",
+      "location": "com/example/app/FalsePositiveTest.java:19",
+      "masvs_ref": "MASVS-STORAGE-1"
+    },
+    {
+      "id": "SRC-TRUSTMANAGER",
+      "title": "모든 인증서를 신뢰하는 TrustManager",
+      "severity": "Critical",
+      "category": "네트워크",
+      "description": "패턴 '모든 인증서를 신뢰하는 TrustManager'이(가) 탐지되었습니다. 소스 코드에서 직접 확인이 필요합니다.",
+      "location": "com/example/app/NetworkAndWebViewSetup.java:30",
+      "masvs_ref": "MASVS-NETWORK-1"
+    },
+    {
+      "id": "SRC-HOSTNAMEVERIFIERTRUE",
+      "title": "HostnameVerifier가 항상 true 반환",
+      "severity": "Critical",
+      "category": "네트워크",
+      "description": "패턴 'HostnameVerifier가 항상 true 반환'이(가) 탐지되었습니다. 소스 코드에서 직접 확인이 필요합니다.",
+      "location": "com/example/app/NetworkAndWebViewSetup.java:34",
+      "masvs_ref": "MASVS-NETWORK-1"
+    },
+    {
+      "id": "SRC-WEBVIEWJAVASCRIPT",
+      "title": "WebView JavaScript 활성화",
+      "severity": "Low",
+      "category": "WebView",
+      "description": "패턴 'WebView JavaScript 활성화'이(가) 탐지되었습니다. 소스 코드에서 직접 확인이 필요합니다.",
+      "location": "com/example/app/NetworkAndWebViewSetup.java:16",
+      "masvs_ref": "MASVS-PLATFORM-2"
+    },
+    {
+      "id": "SRC-WEBVIEWJAVASCRIPTINTERFACE",
+      "title": "WebView에 JavascriptInterface 노출",
+      "severity": "High",
+      "category": "WebView",
+      "description": "패턴 'WebView에 JavascriptInterface 노출'이(가) 탐지되었습니다. 소스 코드에서 직접 확인이 필요합니다.",
+      "location": "com/example/app/NetworkAndWebViewSetup.java:18",
+      "masvs_ref": "MASVS-PLATFORM-2"
+    },
+    {
+      "id": "SRC-WEBVIEW",
+      "title": "WebView 파일 접근 허용",
+      "severity": "Medium",
+      "category": "WebView",
+      "description": "패턴 'WebView 파일 접근 허용'이(가) 탐지되었습니다. 소스 코드에서 직접 확인이 필요합니다.",
+      "location": "com/example/app/NetworkAndWebViewSetup.java:17",
+      "masvs_ref": "MASVS-PLATFORM-2"
+    },
+    {
+      "id": "SRC-SHAREDPREFERENCES",
+      "title": "SharedPreferences에 평문 저장 의심",
+      "severity": "High",
+      "category": "저장소",
+      "description": "패턴 'SharedPreferences에 평문 저장 의심'이(가) 탐지되었습니다. 소스 코드에서 직접 확인이 필요합니다.",
+      "location": "com/example/app/NetworkAndWebViewSetup.java:23",
+      "masvs_ref": "MASVS-STORAGE-1"
+    },
+    {
+      "id": "SRC-SEED",
+      "title": "고정된 Seed를 사용하는 난수 생성",
+      "severity": "High",
+      "category": "난수/IV",
+      "description": "패턴 '고정된 Seed를 사용하는 난수 생성'이(가) 탐지되었습니다. 소스 코드에서 직접 확인이 필요합니다.",
+      "location": "com/example/app/NetworkAndWebViewSetup.java:41",
+      "masvs_ref": "MASVS-CRYPTO-1"
+    },
+    {
+      "id": "SRC-IV",
+      "title": "고정된 IV(초기화 벡터) 사용 의심",
+      "severity": "High",
+      "category": "난수/IV",
+      "description": "패턴 '고정된 IV(초기화 벡터) 사용 의심'이(가) 탐지되었습니다. 소스 코드에서 직접 확인이 필요합니다.",
+      "location": "com/example/app/NetworkAndWebViewSetup.java:48",
+      "masvs_ref": "MASVS-CRYPTO-1"
+    }
+  ]
+}
